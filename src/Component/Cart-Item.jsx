@@ -1,9 +1,9 @@
-import { useState, useContext } from "react";
-import { ShopContext } from "../Context/ShopContext";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 export const CartItem = ({item}) => {
 
-	const {dispatch} = useContext(ShopContext)
+	const dispatch = useDispatch();
 
     const [itemQuantity, setItemQuantity] = useState(item.quantity)
 
