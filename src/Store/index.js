@@ -1,11 +1,12 @@
-import { createStore } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
 import { ShopReducer } from "./ShopReducer";
 import { CounterReducer } from "./CounterReducer";
-import { combineReducers } from "redux";
 
-const allReducer = combineReducers({
-    counter:CounterReducer,
-    shop:ShopReducer,
+
+const allReducer = {counter: CounterReducer,
+                    shop: ShopReducer
+                    }
+
+export const store = configureStore({
+    reducer: allReducer
 });
-
-export const store = createStore(allReducer);
