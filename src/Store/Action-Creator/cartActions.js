@@ -16,11 +16,13 @@
 
 // Redux toolkit actions
 
-import { createAction } from "@reduxjs/toolkit";
+// import { createAction } from "@reduxjs/toolkit";
 
-const addItem = createAction('ADD-ITEM');
-const removeItem = createAction('REMOVE-ITEM')
-const modifyQuantity = createAction('MODIFY-ITEM')
-const clearCart = createAction('CLEAR-CART')
+// const addItem = createAction('ADD-ITEM');
+// const removeItem = createAction('REMOVE-ITEM')
+// const modifyQuantity = createAction('MODIFY-ITEM')
+// const clearCart = createAction('CLEAR-CART')
+
+import { addItem, removeItem, modifyQuantity, clearCart } from "../ShopReducer";
 
 export {addItem, removeItem, modifyQuantity, clearCart};
