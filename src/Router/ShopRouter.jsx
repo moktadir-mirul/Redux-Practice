@@ -6,6 +6,7 @@ import { Cart } from "../Pages/Cart";
 // import { PostDescription } from "../Pages/PostDescription";
 // import { CounterWebApp } from "../Pages/CounterWebApp";
 import { PostLayout } from "../Pages/Outlet";
+import { CounterApp } from "../Pages/CounterApp";
 
 
 export const ShopRouter = createBrowserRouter([
@@ -14,6 +15,6 @@ export const ShopRouter = createBrowserRouter([
         {path: "/Cart", element: <Cart />},
         // {path: "/PostName", element: <PostName />},
         // {path:"/PostName/:PostDetails", element: <PostDescription />},
-        // {path:"/counter", element: <CounterWebApp />}
+        {path:"/counter", element: <CounterApp />}
     ]}
 ])

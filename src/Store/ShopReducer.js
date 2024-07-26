@@ -27,5 +27,8 @@ export const ShopReducer = (state=[], action) => {
         case 'CLEAR-CART': {
             return [];
         }
+        default: {
+            return state;
+        }
     }
 }

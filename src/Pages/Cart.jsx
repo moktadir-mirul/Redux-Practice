@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 export const Cart = () => {
 
-	const cart = useSelector((CartState) => CartState);
+	const cart = useSelector((state) => state.shop);
 	const dispatch =useDispatch();
 
 	let totalPrice = 0;
