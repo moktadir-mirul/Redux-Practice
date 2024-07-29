@@ -34,8 +34,8 @@ export const PostDetails = () => {
     return (
         <div>
             {errorMessage && <h1 style={{color:"crimson", textAlign:"center", fontSize:"30px", marginTop: '40px'}}>!!!Warning: Data Loading has Failed!!!</h1>}
-            <h1 style={{color:"cyan", textAlign:"center", fontSize:"30px", marginTop: '40px', width: '500px', height: 'auto', margin: '0 auto'}}>{post?.details}</h1>
-            <p style={{color:"crimson", textAlign:"center", fontSize:"15px", marginTop: '20px', width: '500px', height: 'auto', margin: '0 auto'}}>{post?.body}</p>
+            <h1 style={{color:"darkgreen", textAlign:"center", fontSize:"25px", marginTop: '40px', width: '500px', height: 'auto', margin: '0 auto'}}>{post?.details}</h1>
+            <p style={{color:"chocolate", textAlign:"center", fontSize:"20px", marginTop: '30px', width: '600px', height: 'auto', margin: '0 auto'}}>{post?.body}</p>
             <li style={{color:"crimson", textAlign:"center", fontSize:"15px", marginTop: '30px', width: '500px', height: 'auto', margin: '0 auto'}}><Link to={"/posts"}>Go back</Link></li>
         </div>
     )

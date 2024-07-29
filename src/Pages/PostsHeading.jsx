@@ -1,6 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { fetchPosts } from "../Store/Fetching Functions/fetchPost";
+
 
 
 
@@ -11,7 +13,7 @@ export const PostsHeading = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch('fake-post-action')
+        dispatch(fetchPosts)
     }, [])
 
     if(isLoading === true) {

@@ -27,6 +27,7 @@ export const PersonsReducer = (state = initState, action) => {
                 ...state,
                 isLoading: false,
                 errorMessage: action.payload,
+                users: []
             }
         }
         default: {

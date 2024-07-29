@@ -1,5 +1,7 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useEffect } from "react";
+import { fetchUsers } from "../Store/Fetching Functions/fetchUsers";
+
 
 
 export const Users = () => {
@@ -7,7 +9,7 @@ export const Users = () => {
     const {users, isLoading, errorMessage} = useSelector((storeState) => storeState.users);
 
     useEffect(() => {
-        dispatch('fake-user-action')
+        dispatch(fetchUsers)
     }, [])
     if(isLoading === true) {
         return (
