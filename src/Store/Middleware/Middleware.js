@@ -14,5 +14,17 @@ export const ShopMiddleware = (store) => (next) => (action) => {
         })
         return;
     }
+    if(action === 'fake-user-action') {
+        store.dispatch({type: 'user/fetchStarted'});
+        fetch('http://localhost:300/users')
+        .then((res) => res.json())
+        .then((data) => {
+            store.dispatch({type: 'user/fetchDone', payload: data})
+        })
+        .catch((error) => {
+            store.dispatch({type: 'user/fetchFailed', payload: error.message})
+        })
+        return;
+    }
     next(action);
 }

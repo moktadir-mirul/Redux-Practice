@@ -9,6 +9,7 @@ export const Nav= () => {
                 {/* <li><Link to={"/PostName"}>Post Name</Link></li> */}
                 <li><Link to={"/counter"}>Counter</Link></li>
                 <li><Link to={"/posts"}>Posts</Link></li>
+                <li><Link to={"/users"}>Users</Link></li>
             </ul>
         </div>
     )

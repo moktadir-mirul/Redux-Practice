@@ -9,6 +9,7 @@ import { PostLayout } from "../Pages/Outlet";
 import { CounterApp } from "../Pages/CounterApp";
 import { PostsHeading } from "../Pages/PostsHeading";
 import { PostDetails } from "../Pages/PostDetails";
+import { Users } from "../Pages/Users";
 
 
 export const ShopRouter = createBrowserRouter([
@@ -19,6 +20,7 @@ export const ShopRouter = createBrowserRouter([
         // {path:"/PostName/:PostDetails", element: <PostDescription />},
         {path:"/counter", element: <CounterApp />},
         {path: "/posts", element: <PostsHeading />},
-        {path: "/posts/:details", element: <PostDetails />}
+        {path: "/posts/:details", element: <PostDetails />},
+        {path: "/users", element: <Users />}
     ]}
 ])
