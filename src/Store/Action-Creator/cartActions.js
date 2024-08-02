@@ -23,6 +23,6 @@
 // const modifyQuantity = createAction('MODIFY-ITEM')
 // const clearCart = createAction('CLEAR-CART')
 
-import { addItem, removeItem, modifyQuantity, clearCart } from "../ShopReducer";
+import { addItem, removeItem, modifyQuantity, clearCart } from "../Reducers/ShopReducer"
 
 export {addItem, removeItem, modifyQuantity, clearCart};
