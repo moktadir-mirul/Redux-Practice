@@ -8,6 +8,8 @@ export const Nav= () => {
                 <li><Link to={"/Cart"}>Cart</Link></li>
                 {/* <li><Link to={"/PostName"}>Post Name</Link></li> */}
                 <li><Link to={"/counter"}>Counter</Link></li>
+                <li><Link to={"/AddProducts"}>Add a Product</Link></li>
+                <li><Link to={"/AllProducts"}>All Products</Link></li>
             </ul>
         </div>
     )

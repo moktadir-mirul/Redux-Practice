@@ -4,7 +4,7 @@ import { ProductCard } from "../Component/ProductCard";
 import { fetchProduct } from "../Store/Reducers/ProductThunk";
 
 export const Shop = () => {
-    const {products} = useSelector((storeState) => storeState.product);
+    const { products } = useSelector((storeState) => storeState.product);
 
 	const dispatch = useDispatch();
 
