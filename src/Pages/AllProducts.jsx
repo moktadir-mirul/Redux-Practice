@@ -5,8 +5,7 @@ import { ProductList } from "../Component/ProductList";
 
 
 export const AllProducts = () => {
-    const { products } = useSelector((storeState) => storeState.product);
-    console.log(products, 'product in All')
+    const { products } = useSelector((storeState) => storeState.product);;
 
 	return (
 		<main>

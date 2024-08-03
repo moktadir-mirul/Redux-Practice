@@ -23,7 +23,7 @@ export const AddProduct = () => {
     const SubmitHandler = (incident) => {
         incident.preventDefault();
         dispatch(createProduct(product));   
-        setProduct({...product, title: '', description: '', price: '', image: ''}) 
+        setProduct({title: '', description: '', price: '', image: ''}) 
     }
 
     return (

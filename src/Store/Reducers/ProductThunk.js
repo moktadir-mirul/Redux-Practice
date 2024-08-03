@@ -28,6 +28,17 @@ export const createProduct = createAsyncThunk('products/createProduct',
     }
 )
 
+export const removeProduct = createAsyncThunk('products/removeProduct',
+    async (ID) => {
+        const response = await fetch(`http://localhost:3000/products/${ID}`,
+            {
+                method: "DELETE",
+            }
+        )
+        return ID;
+    }
+)
+
 export const ProductSlice = createSlice({
     name: 'product',
     initialState: primaryValue,
@@ -59,6 +70,9 @@ export const ProductSlice = createSlice({
             state.isLoading = false;
             state.products = [];
             state.errorMessage = action.error.message;
+        })
+        .addCase(removeProduct.fulfilled, (state, action) => {
+            state.products = state.products.filter((product) => product.id !== action.payload);
         })
     }
 
