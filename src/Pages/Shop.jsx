@@ -1,17 +1,19 @@
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import { ProductCard } from "../Component/ProductCard";
-import { fetchProduct } from "../Store/Reducers/ProductThunk";
+import { useGetAllProductsQuery } from "../Store/QueryFeatures/ApiQuery";
+
 
 export const Shop = () => {
-    const { products } = useSelector((storeState) => storeState.product);
+    
+	const {isFetching, isError, error, data: products} = useGetAllProductsQuery()
 
-	const dispatch = useDispatch();
-
-    useEffect(() => {
-		dispatch(fetchProduct());
-    }, [])
+	if(isFetching) {
+		return <h2>Data is Loading.......</h2>
+	}
+	if (isError) {
+		return <h2>{error.message}</h2>
+	}
     return(
+		
 		<div>
 			<div className="page-banner">
 				<div className="page-banner__details">

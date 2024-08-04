@@ -1,14 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { CounterReducer } from "./Reducers/CounterReducer";
 import { ShopSlice } from "./Reducers/ShopReducer";
-import { ProductSlice } from "./Reducers/ProductThunk";
+import { ShopApi } from "./QueryFeatures/ApiQuery";
 
 
 const allReducer = {counter: CounterReducer,
                     shop: ShopSlice.reducer,
-                    product: ProductSlice.reducer
+                    [ShopApi.reducerPath] : ShopApi.reducer,
                     }
 
 export const store = configureStore({
-    reducer: allReducer
+    reducer: allReducer,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(ShopApi.middleware)
 });

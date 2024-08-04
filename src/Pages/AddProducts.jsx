@@ -1,20 +1,21 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { createProduct } from "../Store/Reducers/ProductThunk";
+import { useCreateAProductMutation } from "../Store/QueryFeatures/ApiQuery";
 
 
 
-
+const Value = {
+					title: '',
+					description: '',
+					price: '',
+					image: '',
+				}
 export const AddProduct = () => {
 
-    const dispatch = useDispatch();
 
-    const [product, setProduct] = useState({
-        title: '',
-        description: '',
-        price: '',
-        image: '',
-    })
+
+	const [addProduct] = useCreateAProductMutation();
+
+    const [product, setProduct] = useState(Value);
 
     const ChangeHandler = (event) => {
         setProduct({...product, [event.target.name]: event.target.value})
@@ -22,8 +23,8 @@ export const AddProduct = () => {
 
     const SubmitHandler = (incident) => {
         incident.preventDefault();
-        dispatch(createProduct(product));   
-        setProduct({title: '', description: '', price: '', image: ''}) 
+		addProduct(product);
+		setProduct(Value);
     }
 
     return (
@@ -39,6 +40,7 @@ export const AddProduct = () => {
 			>
 				<p>Title</p>
 				<input
+					value={product.title}
 					type="text"
 					name="title"
 					required
@@ -48,6 +50,7 @@ export const AddProduct = () => {
 				<br />
 				<p>Description</p>
 				<input
+					value={product.description}
 					type="text"
 					name="description"
 					required
@@ -57,6 +60,7 @@ export const AddProduct = () => {
 				<br />
 				<p>Price</p>
 				<input
+					value={product.price}
 					type="number"
 					name="price"
 					required
@@ -66,6 +70,7 @@ export const AddProduct = () => {
 				<br />
 				<p>Image</p>
 				<input
+					value={product.image}
 					type="text"
 					name="image"
 					required

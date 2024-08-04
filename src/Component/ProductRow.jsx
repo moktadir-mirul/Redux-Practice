@@ -1,12 +1,13 @@
-import { useDispatch } from "react-redux";
-import { removeProduct } from "../Store/Reducers/ProductThunk";
+import { useRemoveAProductMutation } from "../Store/QueryFeatures/ApiQuery";
+
+
 
 export function ProductRow({ item }) {
-    
-    const dispatch = useDispatch();
+
+    const [removeProduct] = useRemoveAProductMutation();
 
     const removeHandler = () => {
-        dispatch(removeProduct(item.id));
+        removeProduct(item.id);
     }
 
     return (

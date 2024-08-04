@@ -1,11 +1,11 @@
-import { useSelector } from "react-redux";
 import { ProductList } from "../Component/ProductList";
+import { useGetAllProductsQuery } from "../Store/QueryFeatures/ApiQuery";
 
 
 
 
 export const AllProducts = () => {
-    const { products } = useSelector((storeState) => storeState.product);;
+    const {data: products} = useGetAllProductsQuery();
 
 	return (
 		<main>
