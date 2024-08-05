@@ -7,6 +7,8 @@ import { Cart } from "../Pages/Cart";
 // import { CounterWebApp } from "../Pages/CounterWebApp";
 import { PostLayout } from "../Pages/Outlet";
 import { CounterApp } from "../Pages/CounterApp";
+import { AddProduct } from "../Pages/AddProducts";
+import { AllProducts } from "../Pages/AllProducts";
 
 
 export const ShopRouter = createBrowserRouter([
@@ -15,6 +17,8 @@ export const ShopRouter = createBrowserRouter([
         {path: "/Cart", element: <Cart />},
         // {path: "/PostName", element: <PostName />},
         // {path:"/PostName/:PostDetails", element: <PostDescription />},
-        {path:"/counter", element: <CounterApp />}
+        {path:"/counter", element: <CounterApp />},
+        {path: "/AddProducts", element: <AddProduct />},
+        {path: "/AllProducts", element: <AllProducts />}
     ]}
 ])

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { modifyQuantity, removeItem } from "../Store/Action-Creator/cartActions";
 
 export const CartItem = ({item}) => {
 
@@ -30,7 +31,7 @@ export const CartItem = ({item}) => {
 						type="button"
 						onClick={() => {
 							if (itemQuantity > 1) {
-								dispatch({type:'MODIFY-ITEM', payload:{id: item.id, quantity: itemQuantity-1}})
+								dispatch(modifyQuantity({id:item.id, quantity:itemQuantity-1}))
 								setItemQuantity(itemQuantity-1);
 							} else {
 								alert('Item quantity cannot be zero')
@@ -49,7 +50,7 @@ export const CartItem = ({item}) => {
 						min="1"
 						onChange={(event) => {
 							
-								dispatch({type: 'MODIFY-ITEM', payload:{id: item.id, quantity:Number(event.target.value)}})
+								dispatch(modifyQuantity({id: item.id, quantity:Number(event.target.value)}))
 								setItemQuantity(Number(event.target.value))
 							
 						}}
@@ -59,7 +60,7 @@ export const CartItem = ({item}) => {
 						data-action="add"
 						type="button"
 						onClick={() => {
-								dispatch({type:'MODIFY-ITEM', payload:{id:item.id, quantity: itemQuantity+1}})
+								dispatch(modifyQuantity({id: item.id, quantity: itemQuantity+1}))
 								setItemQuantity(itemQuantity+1)
 						}}
 					>
@@ -71,7 +72,7 @@ export const CartItem = ({item}) => {
 			</td>
 			<td>${item.price * item.quantity}</td>
 			<td>
-				<button onClick={() => dispatch({type: 'REMOVE-ITEM', payload: item.id})}>Remove</button>
+				<button onClick={() => dispatch(removeItem(item.id))}>Remove</button>
 			</td>
 		</tr>
 	);
