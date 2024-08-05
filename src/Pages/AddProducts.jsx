@@ -11,8 +11,6 @@ const Value = {
 				}
 export const AddProduct = () => {
 
-
-
 	const [addProduct] = useCreateAProductMutation();
 
     const [product, setProduct] = useState(Value);

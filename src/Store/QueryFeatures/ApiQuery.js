@@ -8,11 +8,11 @@ export const ShopApi = createApi({
             baseUrl: 'http://localhost:3000/',
         }
     ),
-    // tagTypes: ["products"],
+    tagTypes: ["products"],
     endpoints: (builder) => ({
         getAllProducts: builder.query({
             query: () => 'products',
-            // providesTags: ["products"]
+            providesTags: ["products"]
         }),
         createAProduct: builder.mutation({
             query: (product) => ({
@@ -20,14 +20,14 @@ export const ShopApi = createApi({
                 method: "POST",
                 body: product
             }),
-            // invalidatesTags: ["products"],
+            invalidatesTags: ["products"],
         }),
         removeAProduct: builder.mutation({
             query: (ID) => ({
                 url: `products/${ID}`,
                 method: "DELETE"
             }), 
-            // invalidatesTags: ["products"] ,
+            invalidatesTags: ["products"],
         })
     })
 
