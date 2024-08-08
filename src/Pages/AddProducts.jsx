@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useCreateAProductMutation } from "../Store/QueryFeatures/ApiQuery";
+import { useCreateAProductMutation } from "../Store/QueryFeatures/Endpoints/productEndpoints";
 
 
 

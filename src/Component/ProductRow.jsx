@@ -1,4 +1,4 @@
-import { useRemoveAProductMutation } from "../Store/QueryFeatures/ApiQuery";
+import { useRemoveAProductMutation } from "../Store/QueryFeatures/Endpoints/productEndpoints";;
 
 
 

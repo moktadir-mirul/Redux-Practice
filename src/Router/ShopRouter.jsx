@@ -9,6 +9,7 @@ import { PostLayout } from "../Pages/Outlet";
 import { CounterApp } from "../Pages/CounterApp";
 import { AddProduct } from "../Pages/AddProducts";
 import { AllProducts } from "../Pages/AllProducts";
+import { NoteList } from "../Pages/NoteList";
 
 
 export const ShopRouter = createBrowserRouter([
@@ -19,6 +20,7 @@ export const ShopRouter = createBrowserRouter([
         // {path:"/PostName/:PostDetails", element: <PostDescription />},
         {path:"/counter", element: <CounterApp />},
         {path: "/AddProducts", element: <AddProduct />},
-        {path: "/AllProducts", element: <AllProducts />}
+        {path: "/AllProducts", element: <AllProducts />},
+        {path: "/AllNotes", element: <NoteList />}
     ]}
 ])

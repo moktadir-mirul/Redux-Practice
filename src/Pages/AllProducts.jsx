@@ -1,5 +1,5 @@
 import { ProductList } from "../Component/ProductList";
-import { useGetAllProductsQuery } from "../Store/QueryFeatures/ApiQuery";
+import { useGetAllProductsQuery } from "../Store/QueryFeatures/Endpoints/productEndpoints";;
 
 
 
