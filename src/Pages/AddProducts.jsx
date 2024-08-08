@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useCreateAProductMutation } from "../Store/QueryFeatures/Endpoints/productEndpoints";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+
 
 
 
@@ -11,7 +13,18 @@ const Value = {
 				}
 export const AddProduct = () => {
 
-	const [addProduct] = useCreateAProductMutation();
+	const queryClient = useQueryClient();
+
+	const addProduct = useMutation({
+		mutationFn: (object) => fetch('http://localhost:3000/products', {
+			method: "POST",
+			body: JSON.stringify(object),
+			headers: {'content-type' : 'application/json'}
+		}),
+		onSuccess: () => {
+			queryClient.invalidateQueries({ queryKey: ['products']});
+		}
+	});
 
     const [product, setProduct] = useState(Value);
 
@@ -21,7 +34,7 @@ export const AddProduct = () => {
 
     const SubmitHandler = (incident) => {
         incident.preventDefault();
-		addProduct(product);
+		addProduct.mutate(product);
 		setProduct(Value);
     }
 

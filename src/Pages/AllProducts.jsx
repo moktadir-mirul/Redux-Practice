@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import { ProductList } from "../Component/ProductList";
 import { useGetAllProductsQuery } from "../Store/QueryFeatures/Endpoints/productEndpoints";;
 
@@ -5,7 +6,12 @@ import { useGetAllProductsQuery } from "../Store/QueryFeatures/Endpoints/product
 
 
 export const AllProducts = () => {
-    const {data: products} = useGetAllProductsQuery();
+    const {data : products} = useQuery({
+		queryKey: ['products'],
+		queryFn: () => fetch('http://localhost:3000/products')
+		.then((res) => res.json()),
+		refetchOnMount: true
+	})
 
 	return (
 		<main>
