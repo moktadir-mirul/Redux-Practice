@@ -20,3 +20,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </Provider>
     </QueryClientProvider>
 )
+
+// Class recording missin tai practice kora hoi nai. 
