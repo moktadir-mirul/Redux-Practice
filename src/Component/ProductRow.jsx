@@ -1,20 +1,12 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRemoveAProductMutation } from "../Store/QueryFeatures/Endpoints/productEndpoints";
+import { useRemoveProduct } from "../Hooks/useProductsHook";
 
 
 
 export function ProductRow({ item }) {
 
-    const queryClient = useQueryClient();
-
-    const removeProduct = useMutation({
-        mutationFn: (PID) => fetch(`http://localhost:3000/products/${PID}`, {
-            method: "DELETE"
-        }),
-        onSuccess: () => {
-            queryClient.invalidateQueries({queryKey: ['products']});
-        }
-    });
+    const {removeProduct} = useRemoveProduct()
 
     const removeHandler = () => {
         removeProduct.mutate(item.id);

@@ -1,16 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { ProductCard } from "../Component/ProductCard";
 import { useGetAllProductsQuery } from "../Store/QueryFeatures/Endpoints/productEndpoints";
+import { useGetAllProducts } from "../Hooks/useProductsHook";
 
 
 export const Shop = () => {
     
-	const {isFetching, isError, error, data: products} = useQuery({
-		queryKey: ['products'],
-		queryFn: () => fetch('http://localhost:3000/products')
-		.then((res) => res.json()),
-		refetchOnMount: true
-	})
+	const {isFetching, isError, error, products} = useGetAllProducts()
 
 	if(isFetching) {
 		return <h2>Data is Loading.......</h2>
