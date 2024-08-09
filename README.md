@@ -1,4 +1,5 @@
 # React-Redux + Vite
-This respository is used for practising redux, redux toolkit, redux toolkit query, tanstack query. Optimistic update class recording missing. Nothing to do.
+This respository is used for practising redux, redux toolkit, redux toolkit query, tanstack query.
+In this branch we will practice traditional approach of React- Class component.
 
 
