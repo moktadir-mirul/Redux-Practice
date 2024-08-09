@@ -3,25 +3,15 @@ import { withFetch } from "../Higher Order Component/WithFetch";
 
 
 class AllPostClass extends Component{
-    state = {
-        isLoading: true,
-        posts:[],
-        errorMessage: ''
-    }
-
-    componentDidMount() {
-        fetch('http://localhost:3000/posts')
-        .then((res) => res.json())
-        .then((data) => {this.setState({...this.state, isLoading: false, posts: data, errorMessage: ''})})
-        .catch((err) => (this.setState({...this.state, isLoading: false, posts: [], errorMessage: err.message})))
-    }
 
     // componentDidUpdate(state, props) {
     //     if(state.isLoading == this.state.isLoading){
     //     console.log("state not state");}
     // }
+    // componentDidCatch() {}= used for triggering while logical error happened
+    // componentWillUnmount(){}= used for triggering when a component item is deleted
     render() {
-        const {isLoading, posts, errorMessage} = this.state;
+        const {isLoading, result: posts, errorMessage} = this.props;
         return(
             <div>
                 <h1 className="posthd" style={{color:'green'}}>All Posts</h1>
@@ -37,4 +27,4 @@ class AllPostClass extends Component{
     }
 }
 
-export default AllPostClass;;
+export default withFetch('http://localhost:3000/posts', [], AllPostClass);

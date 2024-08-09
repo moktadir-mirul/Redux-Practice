@@ -4,21 +4,9 @@ import { withFetch } from "../Higher Order Component/WithFetch";
 
 
 class AllUserClass extends Component {
-    state = {
-        isLoading: true,
-        users: [],
-        errorMessage: ''
-    }
-
-    componentDidMount() {
-        fetch('http://localhost:3000/users')
-        .then((res) => res.json())
-        .then((data) => {this.setState({...this.state, isLoading: false, users: data, errorMessage: ''})})
-        .catch((err) => (this.setState({...this.state, isLoading: false, users: [], errorMessage: err.message})))
-    }
 
     render() {
-        const {isLoading, users, errorMessage} = this.state;
+        const {isLoading, result: users, errorMessage} = this.props;
         return (
             <div>
                 <h1 className="posthd" style={{color:'crimson'}}>All User name</h1>
@@ -35,4 +23,4 @@ class AllUserClass extends Component {
     }
 }
 
-export default AllUserClass;
+export default withFetch('http://localhost:3000/users', [], AllUserClass);
