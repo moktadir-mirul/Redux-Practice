@@ -26,4 +26,4 @@ export const productApi = ShopApi.injectEndpoints({
             })
         })
 
-        export const {useGetAllProductsQuery, useCreateAProductMutation, useRemoveAProductMutation} = productApi
+        export const {useGetAllProductsQuery, useCreateAProductMutation, useRemoveAProductMutation} = productApi;
