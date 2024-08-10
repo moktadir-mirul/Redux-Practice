@@ -1,13 +1,15 @@
-import { useRemoveAProductMutation } from "../Store/QueryFeatures/ApiQuery";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useRemoveAProductMutation } from "../Store/QueryFeatures/Endpoints/productEndpoints";
+import { useRemoveProduct } from "../Hooks/useProductsHook";
 
 
 
 export function ProductRow({ item }) {
 
-    const [removeProduct] = useRemoveAProductMutation();
+    const {removeProduct} = useRemoveProduct()
 
     const removeHandler = () => {
-        removeProduct(item.id);
+        removeProduct.mutate(item.id);
     }
 
     return (

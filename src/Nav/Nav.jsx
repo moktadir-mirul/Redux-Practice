@@ -10,6 +10,8 @@ export const Nav= () => {
                 <li><Link to={"/counter"}>Counter</Link></li>
                 <li><Link to={"/AddProducts"}>Add a Product</Link></li>
                 <li><Link to={"/AllProducts"}>All Products</Link></li>
+                <li><Link to={"/AllNotes"}>All Notes</Link></li>
+                <li><Link to={"/ClassExample"}>Class Component</Link></li>
             </ul>
         </div>
     )

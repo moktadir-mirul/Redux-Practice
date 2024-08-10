@@ -1,11 +1,13 @@
+import { useQuery } from "@tanstack/react-query";
 import { ProductList } from "../Component/ProductList";
-import { useGetAllProductsQuery } from "../Store/QueryFeatures/ApiQuery";
+import { useGetAllProductsQuery } from "../Store/QueryFeatures/Endpoints/productEndpoints";import { useGetAllProducts } from "../Hooks/useProductsHook";
+;
 
 
 
 
 export const AllProducts = () => {
-    const {data: products} = useGetAllProductsQuery();
+    const {products} = useGetAllProducts()
 
 	return (
 		<main>

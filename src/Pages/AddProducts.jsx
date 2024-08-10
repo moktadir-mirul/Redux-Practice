@@ -1,5 +1,8 @@
 import { useState } from "react";
-import { useCreateAProductMutation } from "../Store/QueryFeatures/ApiQuery";
+import { useCreateAProductMutation } from "../Store/QueryFeatures/Endpoints/productEndpoints";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useAddProduct } from "../Hooks/useProductsHook";
+
 
 
 
@@ -11,8 +14,7 @@ const Value = {
 				}
 export const AddProduct = () => {
 
-	const [addProduct] = useCreateAProductMutation();
-
+	const {addProduct} = useAddProduct();
     const [product, setProduct] = useState(Value);
 
     const ChangeHandler = (event) => {
@@ -21,7 +23,7 @@ export const AddProduct = () => {
 
     const SubmitHandler = (incident) => {
         incident.preventDefault();
-		addProduct(product);
+		addProduct.mutate(product);
 		setProduct(Value);
     }
 

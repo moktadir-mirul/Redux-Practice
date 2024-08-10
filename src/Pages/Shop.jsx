@@ -1,10 +1,12 @@
+import { useQuery } from "@tanstack/react-query";
 import { ProductCard } from "../Component/ProductCard";
-import { useGetAllProductsQuery } from "../Store/QueryFeatures/ApiQuery";
+import { useGetAllProductsQuery } from "../Store/QueryFeatures/Endpoints/productEndpoints";
+import { useGetAllProducts } from "../Hooks/useProductsHook";
 
 
 export const Shop = () => {
     
-	const {isFetching, isError, error, data: products} = useGetAllProductsQuery()
+	const {isFetching, isError, error, products} = useGetAllProducts()
 
 	if(isFetching) {
 		return <h2>Data is Loading.......</h2>
@@ -31,7 +33,7 @@ export const Shop = () => {
 					</div>
 					<div className="section__content">
 						<div className="grid three">
-                            {products.map((product) => (
+                            {products?.map((product) => (
                                 <ProductCard key={product.id} product={product} />
                             ))}
 						</div>
