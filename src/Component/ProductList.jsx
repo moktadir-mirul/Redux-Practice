@@ -1,8 +1,5 @@
 import { ProductRow } from "./ProductRow";
 
-
-
-
 export const ProductList = ({products}) => {
     
 	return (
