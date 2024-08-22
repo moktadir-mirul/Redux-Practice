@@ -37,9 +37,21 @@ export const useRemoveMutation = () => {
         mutationFn: (NID) => fetch(`http://localhost:3000/notes/${NID}`, {
             method: "DELETE",
         }),
-        onSuccess: () => {
+        onMutate: async (NID) => {
+            await queryClient.cancelQueries(["notes"]);
+            const prevData = queryClient.getQueryData(["notes"]);
+            queryClient.setQueryData(["notes"], (oldData) => {
+                return oldData.filter((item) => item.id !== NID)
+            })
+            return {prevData}
+        },
+        onError: (err, variable, context) => {
+            queryClient.setQueryData(["notes"], () => context.prevData)
+        },
+        onSettled: () => {
             queryClient.invalidateQueries(["notes"])
         }
+
     })
     
 }
@@ -53,9 +65,26 @@ export const useUpdateMutation = () => {
                 body: JSON.stringify(note),
                 headers: {'content-type' : 'application/json'}
             }),
-            onSuccess: () => {
-                queryClient.invalidateQueries(["notes"])
+            onMutate: async ({id, note}) => {
+                await queryClient.cancelQueries(["notes"]);
+                const prevData = queryClient.getQueryData(["notes"]);
+                queryClient.setQueryData(["notes"], (oldData) => {
+                    return oldData.map((item) => {
+                        if(item.id === id) {
+                            return {...item, isComplete: !item.isComplete}
+                        } 
+                        return item;
+                    });
+                })
+                return {prevData};
+            },
+            onError: (err, variables, context) => {
+                queryClient.setQueryData(["notes"], () => context.prevData)
+            },
+            onSettled: () => {
+                queryClient.invalidateQueries({queryKey : ["notes"]})
             }
+
     });
     return {updateMutation}
 }

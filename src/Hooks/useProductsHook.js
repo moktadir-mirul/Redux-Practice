@@ -48,19 +48,3 @@ export const useRemoveProduct = () => {
         removeProduct
     }
 }
-
-export const useUpdateMutation = () => {
-    const queryClient = useQueryClient();
-    const updateMutation = useMutation({
-        mutationFn: ({id, note}) => fetch(`http://localhost:3000/notes?${id}`,
-            {
-                method: "PUT",
-                body: JSON.stringify(note),
-                headers: {'content-type' : 'application/json'}
-            }
-        ),
-        onMutate: () => {
-            
-        }
-    })
-}
