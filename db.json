@@ -38,16 +38,19 @@
   ],
   "notes": [
     {
-      "id": "1721220439777",
-      "title": "First Note"
+      "title": "Note 1",
+      "isComplete": false,
+      "id": 1
     },
     {
-      "id": "1721220487490",
-      "title": "Second Note"
+      "title": "Note 2",
+      "isComplete": false,
+      "id": 2
     },
     {
-      "id": "1721220487491",
-      "title": "Third Note"
+      "title": "Note 3",
+      "isComplete": false,
+      "id": 3
     }
   ],
   "products": [

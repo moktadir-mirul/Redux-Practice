@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { ProductList } from "../Component/ProductList";
-import { useGetAllProductsQuery } from "../Store/QueryFeatures/Endpoints/productEndpoints";import { useGetAllProducts } from "../Hooks/useProductsHook";
-;
+import { useGetAllProductsQuery } from "../Store/QueryFeatures/Endpoints/productEndpoints";
+import { useGetAllProducts } from "../Hooks/useProductsHook";
+
 
 
 
