@@ -10,6 +10,7 @@ import { CounterApp } from "../Pages/CounterApp";
 import { AddProduct } from "../Pages/AddProducts";
 import { AllProducts } from "../Pages/AllProducts";
 import { NoteList } from "../Pages/NoteList";
+import ClassComponent from "../Pages/ClassComponent";
 
 
 export const ShopRouter = createBrowserRouter([
@@ -21,6 +22,7 @@ export const ShopRouter = createBrowserRouter([
         {path:"/counter", element: <CounterApp />},
         {path: "/AddProducts", element: <AddProduct />},
         {path: "/AllProducts", element: <AllProducts />},
-        {path: "/AllNotes", element: <NoteList />}
+        {path: "/AllNotes", element: <NoteList />},
+        {path: "/ClassExample", element: <ClassComponent />}
     ]}
 ])
