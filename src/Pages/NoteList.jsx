@@ -1,27 +1,36 @@
 import { useState } from "react";
-import { useCreateANoteMutation, useGetAllNotesQuery, useRemoveANoteMutation } from "../Store/QueryFeatures/Endpoints/noteEndpoints";;
+import { useCreateANoteMutation, useGetAllNotesQuery, useRemoveANoteMutation } from "../Store/QueryFeatures/Endpoints/noteEndpoints";
+import { useCreateNote, useGetAllNotes, useRemoveMutation, useUpdateMutation } from "../Hooks/useNotesHooks";
 
 
 export const NoteList = () => {
 
     const [noteTitle, setNoteTitle] = useState('');
 
-    const {isFetching, isError, error, data: notes} = useGetAllNotesQuery();
+    const {isFetching, isError, error, notes} = useGetAllNotes();
 
-    const [createNote] = useCreateANoteMutation();
+    const createNote = useCreateNote();
 
-    const [removeNote] = useRemoveANoteMutation();
+    const deleteMutation = useRemoveMutation();
+
+    const {updateMutation} = useUpdateMutation();
 
     const submitHandler = (event) => {
         event.preventDefault();
         if(noteTitle.trim() === '') return alert('Please enter a note name');
-        const newNote = {title: noteTitle};
-        createNote(newNote);
+        const newNote = {title: noteTitle, isComplete: false};
+        createNote.mutate(newNote);
         setNoteTitle('')
     }
 
     const removeHandler = (NoteID) => {
-        removeNote(NoteID);
+        deleteMutation.mutate(NoteID);
+    }
+
+    const updateHandler = (editedNote) => {
+        const {id, ...rest} = editedNote;
+        const updatedNote = {...rest, isComplete: !editedNote.isComplete};
+        updateMutation.mutate({id, note: updatedNote});
     }
 
     if (isFetching) {
@@ -35,14 +44,17 @@ export const NoteList = () => {
         <div style={{textAlign: "center", marginTop: '15px', width: '100%', height: '100vh', backgroundColor: "#D0B8A8", border: '2px solid yellow'}}>
             <form className="formArea" onSubmit={submitHandler} style={{margin: '20px'}}>
                 <input type="text" className="inputField" placeholder='Enter the note name' value={noteTitle} onChange={(e) => setNoteTitle(e.target.value)}/>
-                <button className="btnAll">Add Note</button>
+                <button className="btnAll" type="submit">Add Note</button>
             </form>
-            {notes?.map((note) => (
-                <li key={note.id}>
-                    <span style={{fontSize: '30px'}}>{note.title}</span>
-                    <button className="btnAll" onClick={() => removeHandler(note.id)}>Delete</button>
-                </li>
-            ))}
+            <ul>
+                {notes?.map((note) => (
+                    <li key={note.id}>
+                        <input type="checkbox" onChange={() => updateHandler(note)} checked={note.isComplete} />
+                        <span style={{fontSize: '30px'}}>{note.title}</span>
+                        <button className="btnAll" onClick={() => removeHandler(note.id)}>Delete</button>
+                    </li>
+                ))}
+            </ul>
         </div>
     )
 
